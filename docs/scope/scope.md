@@ -9,21 +9,21 @@ _These are recommendations to keep your build orderly, not requirements. You may
 
 ## At a glance
 
-| #   | Feature                             | Phase      | Status      |
-| --- | ----------------------------------- | ---------- | ----------- |
-| 1   | Stack and architecture              | Foundation | done        |
-| 2   | Coding standards and tooling        | Foundation | in-progress |
-| 3   | Data model                          | Foundation | planned     |
-| 4   | Design system and UI foundation     | Foundation | planned     |
-| 5   | Core medication loop                | Slice 1    | planned     |
-| 6   | Regimen management                  | Slice 2    | planned     |
-| 7   | Dose status rules                   | Slice 3    | planned     |
-| 8   | Reminder delivery                   | Slice 4    | planned     |
-| 9   | Adherence history                   | Slice 5    | planned     |
-| 10  | Offline logging and sync            | Slice 6    | planned     |
-| 11  | Account recovery and data controls  | Slice 7    | planned     |
-| 12  | Product measurement and reliability | Slice 8    | planned     |
-| 13  | Public and legal pages              | Slice 9    | planned     |
+| #   | Feature                             | Phase      | Status  |
+| --- | ----------------------------------- | ---------- | ------- |
+| 1   | Stack and architecture              | Foundation | done    |
+| 2   | Coding standards and tooling        | Foundation | done    |
+| 3   | Data model                          | Foundation | planned |
+| 4   | Design system and UI foundation     | Foundation | planned |
+| 5   | Core medication loop                | Slice 1    | planned |
+| 6   | Regimen management                  | Slice 2    | planned |
+| 7   | Dose status rules                   | Slice 3    | planned |
+| 8   | Reminder delivery                   | Slice 4    | planned |
+| 9   | Adherence history                   | Slice 5    | planned |
+| 10  | Offline logging and sync            | Slice 6    | planned |
+| 11  | Account recovery and data controls  | Slice 7    | planned |
+| 12  | Product measurement and reliability | Slice 8    | planned |
+| 13  | Public and legal pages              | Slice 9    | planned |
 
 ## Foundations
 
@@ -41,13 +41,13 @@ Choose the application structure and scaffold an installable responsive web app 
 - [x] Verify it: `/check verify stack and architecture` · skipped by engineer
 - [x] Test it: `/test stack and architecture` · skipped by engineer
 
-### 2. Coding standards and tooling · in-progress · assumed decision (spec 0002)
+### 2. Coding standards and tooling · done · assumed decision (spec 0002)
 
 Capture conventions from the real scaffold, then add the checks that keep later work consistent.
 
 **Done when:** root `AGENTS.md` reflects the actual project, and its chosen format, lint, type, commit, and continuous integration checks run clean.
 
-**Spec:** [0002](../specs/0002-coding-standards-and-tooling.md)
+**Spec:** [0002](../specs/0002-coding-standards-and-tooling/index.md)
 **Code:** [tooling configuration](../../package.json)
 
 - [x] Capture conventions and tooling choices: `/audit`
