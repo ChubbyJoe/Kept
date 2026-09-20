@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kept
 
-## Getting Started
+Kept is a progressive web app for simple medication adherence tracking. This
+repository currently contains the runnable foundation described by architecture
+spec 0001.
 
-First, run the development server:
+## Local setup
+
+Use Node.js 24 and npm 11. Install exactly from the committed lockfile:
+
+```bash
+npm ci
+```
+
+Start the local Supabase services, then copy the reported API URL and
+publishable key into `.env.local` using `.env.example` as the shape:
+
+```bash
+npm run supabase:start
+cp .env.example .env.local
+npm run supabase:status
+```
+
+Replace the placeholder publishable key before using either Supabase client
+factory. Then start Next.js and the Serwist service worker builder together:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run format:check
+npm run env:check
+npm run typecheck
+npm run lint
+npm run check
+npm run build
+npm run log:check
+```
 
-## Learn More
+Run `npm run format` to apply Prettier formatting. Commits use the Conventional
+Commits format, for example `feat: add medicine setup`. Husky runs lint-staged
+before each commit and commitlint checks the commit message. GitHub Actions runs
+the same repository checks and production build for pull requests and pushes to
+`main`.
 
-To learn more about Next.js, take a look at the following resources:
+The service worker only caches versioned Next.js static assets and the public
+offline page. Navigation stays network only, so private HTML, React Server
+Component responses, authenticated responses, and health records do not enter
+Cache Storage.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project boundaries
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Product capabilities will live in vertical feature modules under `src/`.
+Shared environment, logging, session, and Supabase setup lives under
+`src/platform/`. Database configuration and future migrations live under
+`supabase/`.
